@@ -190,7 +190,7 @@ func readNumber(line string, i *int) string {
 
 func getTokenType(number string) mytoken.Type {
 	if len(number) == 1 {
-		return mytoken.IntType
+		return mytoken.IntegerNumber
 	}
 
 	i := 0

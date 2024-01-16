@@ -34,3 +34,5 @@ a*
 asdasd
 dasdasd*/
 'asdas'
+
+5**2
