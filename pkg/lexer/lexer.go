@@ -116,6 +116,7 @@ func Parse(file *os.File) []mytoken.Token {
 					break
 				}
 				token.Type = mytoken.Err
+				token.Lexeme = string(currentChar)
 			}
 			result = append(result, token)
 			i++
