@@ -324,7 +324,6 @@ func parseOneLineComment(line string, i *int) (mytoken.Type, string) {
 
 func parseMultilineComment(scanner *bufio.Scanner, line string, i *int) (mytoken.Type, string) {
 	 lexeme := ""
-    *i++
 
     for *i < len(line) {
         lexeme += string(line[*i])
