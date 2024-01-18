@@ -173,7 +173,7 @@ func readNumber(line string, i *int) string {
 
 	ch := rune(line[*i])
 
-	for isNumber(rune(line[*i])) || string(line[*i]) == "." {
+	for isNumber(rune(line[*i])) || string(line[*i]) == "." || string(line[*i]) == "b" || string(line[*i]) == "x" {
 		lexema += string(ch)
 		(*i)++
 		if (*i) == len(line) {
@@ -193,17 +193,18 @@ func getTokenType(number string) mytoken.Type {
 	if len(number) == 1 {
 		return mytoken.IntegerNumber
 	}
+	fmt.Println(number)
 
 	i := 0
 	
-	if string(number[i]) == "0" {
+	if string(number[0]) == "0" {
 		i++
-		switch string(number[i]) {
-		case "b":
-			return parseBinary(number)
-		case "x":
-			return parseHex(number)
-		case ".":
+		switch number[1] {
+		case 'b':
+			return parseBinary(number[i+1:])
+		case 'x':
+			return parseHex(number[i+1:])
+		case '.':
 			return parseReal(number[i+1:])
 		default:
 			return parseOctal(number)
